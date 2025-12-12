@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary SEO Meta Tags -->
+    <title>Shaqran Hussain | Python Developer & Data Analyst | Portfolio</title>
+    <meta name="title" content="Shaqran Hussain | Python Developer & Data Analyst | Portfolio">
+    <meta name="description"
+        content="Shaqran Hussain - Software Engineering student, Python Developer, QA Prompt Engineer, and Data Analyst. OpenHack'25 hackathon winner. Building desktop apps, AI solutions, and data-driven applications.">
+    <meta name="keywords"
+        content="Shaqran Hussain, Python Developer, Data Analyst, QA Prompt Engineer, Software Engineer, Desktop App Developer, PyQt6, Machine Learning, AI Developer, Data Science, Pakistan Developer, GDSC Technical Lead, Portfolio, Mehran University">
+    <meta name="author" content="Shaqran Hussain">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.shaqranhussain.dev/">
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="PK-SD">
+    <meta name="geo.placename" content="Khairpur Mirs, Sindh, Pakistan">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.shaqranhussain.dev/">
+    <meta property="og:title" content="Shaqran Hussain - Python Developer & Data Analyst">
+    <meta property="og:description"
+        content="Software Engineering student and OpenHack'25 winner. Building AI-powered apps, desktop applications, and data solutions with Python.">
+    <meta property="og:image" content="https://www.shaqranhussain.dev/assets/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Shaqran Hussain Portfolio">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.shaqranhussain.dev/">
+    <meta name="twitter:title" content="Shaqran Hussain - Python Developer & Data Analyst">
+    <meta name="twitter:description"
+        content="Software Engineering student and OpenHack'25 winner. Building AI-powered apps, desktop applications, and data solutions with Python.">
+    <meta name="twitter:image" content="https://www.shaqranhussain.dev/assets/images/og-image.png">
+    <meta name="twitter:creator" content="@shaqranhussain">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0a0a1a">
+    <meta name="msapplication-TileColor" content="#0a0a1a">
+
+    <!-- Structured Data - JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Shaqran Hussain",
+        "url": "https://www.shaqranhussain.dev",
+        "image": "https://www.shaqranhussain.dev/assets/images/og-image.png",
+        "jobTitle": ["Python Developer", "QA Prompt Engineer", "Data Analyst"],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "99 Technologies"
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Mehran University SZAB Campus Khairpur Mirs"
+        },
+        "knowsAbout": ["Python", "Data Analysis", "Machine Learning", "PyQt6", "Desktop Applications", "AI", "Prompt Engineering"],
+        "sameAs": [
+            "https://github.com/Shaqran92",
+            "https://www.linkedin.com/in/shaqranhussain01/"
+        ],
+        "award": "OpenHack'25 Hackathon Winner"
+    }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- Preloader Styles -->
+    <style>
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+        }
+
+        .loader-rings {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            top: -30px;
+        }
+
+        .ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid transparent;
+        }
+
+        .ring-1 {
+            border-top-color: #00d9ff;
+            animation: spin 2s linear infinite;
+        }
+
+        .ring-2 {
+            inset: 15px;
+            border-right-color: #0066ff;
+            animation: spin 2.5s linear infinite reverse;
+        }
+
+        .ring-3 {
+            inset: 30px;
+            border-bottom-color: #7c3aed;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d9ff 0%, #0066ff 50%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 2;
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.5));
+                transform: scale(1);
+            }
+
+            50% {
+                filter: drop-shadow(0 0 40px rgba(0, 102, 255, 0.8));
+                transform: scale(1.05);
+            }
+        }
+
+        .loader-progress-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 60px;
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .loader-progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00d9ff, #0066ff, #7c3aed);
+            border-radius: 4px;
+            transition: width 0.1s ease;
+        }
+
+        .loader-percentage {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#home" class="skip-to-content">Skip to main content</a>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader">
+            <!-- Animated Rings -->
+            <div class="loader-rings">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+            </div>
+            <!-- Logo -->
+            <span class="loader-logo">SH</span>
+            <!-- Progress -->
+            <div class="loader-progress-container">
+                <div class="loader-bar">
+                    <div class="loader-progress"></div>
+                </div>
+                <span class="loader-percentage">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-gradient"></div>
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-text">Shaqran.dev</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <button class="nav-close" id="nav-close" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+                <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+                <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+                <li class="nav-item"><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li class="nav-item"><a href="#certificates" class="nav-link">Certificates</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Floating Particles -->
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <!-- Glowing Orbs -->
+        <div class="hero-orb orb-1"></div>
+        <div class="hero-orb orb-2"></div>
+        <div class="hero-orb orb-3"></div>
+
+        <div class="hero-container">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Available for opportunities
+            </div>
+            <h1 class="hero-title">
+                <span class="name">I'm <span class="gradient-text">Shaqran Hussain</span></span>
+            </h1>
+            <p class="hero-subtitle">
+                <span class="typed-text" id="typed-text"></span><span class="cursor">|</span>
+            </p>
+            <p class="hero-description">
+                I craft elegant solutions with Python, build intuitive desktop applications,
+                and transform raw data into actionable insights. Currently exploring
+                Data Science and Machine Learning.
+            </p>
+            <div class="hero-tech">
+                <span class="tech-pill" data-tilt data-tilt-scale="1.05"><i class="fab fa-python"></i> Python</span>
+                <span class="tech-pill" data-tilt data-tilt-scale="1.05"><i class="fas fa-chart-bar"></i> Pandas</span>
+                <span class="tech-pill" data-tilt data-tilt-scale="1.05"><i class="fas fa-database"></i> SQL</span>
+                <span class="tech-pill" data-tilt data-tilt-scale="1.05"><i class="fas fa-desktop"></i> Tkinter</span>
+                <span class="tech-pill" data-tilt data-tilt-scale="1.05"><i class="fas fa-brain"></i> ML</span>
+            </div>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Get in Touch
+                </a>
+                <a href="assets/documents/resume.pdf" class="btn btn-secondary" target="_blank">
+                    <i class="fas fa-arrow-down"></i>
+                    Download CV
+                </a>
+            </div>
+            <div class="hero-socials">
+                <a href="https://github.com/Shaqran92" target="_blank" class="social-link" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/shaqranhussain01/" target="_blank" class="social-link"
+                    aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://wa.me/923269218057" target="_blank" class="social-link" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="mailto:shaqran124@gmail.com" class="social-link" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - Bento Grid -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><i class="fas fa-user"></i> About Me</span>
+                <h2 class="section-title">Passionate Developer & <span class="gradient-text">Data Enthusiast</span></h2>
+            </div>
+            <div class="bento-grid">
+                <!-- Main About Card -->
+                <div class="bento-card bento-large" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.1">
+                    <div class="bento-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Who I Am</h3>
+                    <p>
+                        I'm a <span class="highlight">Software Engineering student</span> focused on building
+                        practical solutions. I work primarily with Python, creating desktop applications
+                        and automation tools.
+                    </p>
+                    <p>
+                        As a <span class="highlight">Python Developer</span>, I write clean, efficient code.
+                        Currently learning <span class="highlight">Data Science</span> and <span
+                            class="highlight">Machine Learning</span>.
+                    </p>
+                    <div class="bento-stats">
+                        <div class="bento-stat">
+                            <span class="number" data-count="10">0</span>+
+                            <span class="label">Projects</span>
+                        </div>
+                        <div class="bento-stat">
+                            <span class="number" data-count="5">0</span>+
+                            <span class="label">Technologies</span>
+                        </div>
+                        <div class="bento-stat">
+                            <span class="number" data-count="1">0</span>+
+                            <span class="label">Years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Cards -->
+                <div class="bento-card" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.15">
+                    <div class="bento-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Clean Code</h3>
+                    <p>Writing code that is easy to read, test, and maintain.</p>
+                </div>
+
+                <div class="bento-card" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.15">
+                    <div class="bento-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data-Driven</h3>
+                    <p>Using data analysis to make better decisions and solve problems.</p>
+                </div>
+
+                <div class="bento-card bento-wide" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.1">
+                    <div class="bento-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Always Learning</h3>
+                    <p>Continuously improving my skills with new technologies and best practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><i class="fas fa-laptop-code"></i> Skills</span>
+                <h2 class="section-title">Technologies I <span class="gradient-text">Work With</span></h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.1">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3>Python Development</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">OOP</span>
+                        <span class="skill-tag">Automation</span>
+                        <span class="skill-tag">Scripting</span>
+                        <span class="skill-tag">APIs</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.1">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>Desktop Applications</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Tkinter</span>
+                        <span class="skill-tag">PyQt</span>
+                        <span class="skill-tag">CustomTkinter</span>
+                        <span class="skill-tag">GUI Design</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.1">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Data Analysis</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">Data Viz</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.1">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Learning & Growth</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Data Science</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Deep Learning</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.1">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Tools & Workflow</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Jupyter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><i class="fas fa-briefcase"></i> Experience</span>
+                <h2 class="section-title">My Professional <span class="gradient-text">Journey</span></h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-title">QA Prompt Engineer Intern</h3>
+                                <span class="timeline-company">99 Technologies</span>
+                            </div>
+                            <span class="timeline-date">Present</span>
+                        </div>
+                        <p class="timeline-description">
+                            Testing and improving AI prompts to ensure quality responses. Working on prompt
+                            optimization and AI testing workflows.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Prompt Engineering</span>
+                            <span class="skill-tag">QA Testing</span>
+                            <span class="skill-tag">AI/ML</span>
+                            <span class="skill-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-title">Freelance Developer</h3>
+                                <span class="timeline-company">Self-Employed</span>
+                            </div>
+                            <span class="timeline-date">Ongoing</span>
+                        </div>
+                        <p class="timeline-description">
+                            Building custom desktop applications and automation tools for clients.
+                            Specializing in Python-based solutions that streamline workflows and
+                            enhance productivity.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Desktop Apps</span>
+                            <span class="skill-tag">Automation</span>
+                            <span class="skill-tag">Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><i class="fas fa-graduation-cap"></i> Education</span>
+                <h2 class="section-title">Academic <span class="gradient-text">Background</span></h2>
+            </div>
+            <div class="education-card" data-tilt data-tilt-max="3" data-tilt-speed="400" data-tilt-glare
+                data-tilt-max-glare="0.1">
+                <div class="education-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="education-details">
+                    <div class="education-header">
+                        <h3>Bachelor of Software Engineering</h3>
+                        <span class="education-status">Currently Enrolled</span>
+                    </div>
+                    <div class="education-info">
+                        <span><i class="fas fa-building"></i> Mehran University of Engineering & Technology</span>
+                        <span><i class="fas fa-map-marker-alt"></i> SZAB Campus, Khairpur Mirs</span>
+                    </div>
+                    <p class="education-description">
+                        Pursuing an undergraduate degree in Software Engineering, focusing on modern software
+                        development practices, data structures, algorithms, and emerging technologies.
+                    </p>
+                    <div class="education-tags">
+                        <span class="skill-tag">Software Development</span>
+                        <span class="skill-tag">Data Structures</span>
+                        <span class="skill-tag">Algorithms</span>
+                        <span class="skill-tag">Database Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><i class="fas fa-trophy"></i> Achievements</span>
+                <h2 class="section-title">Awards & <span class="gradient-text">Recognition</span></h2>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card featured" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.15">
+                    <div class="achievement-badge">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <span class="achievement-type">Hackathon Winner</span>
+                        <h3 class="achievement-title">OpenHack'25</h3>
+                        <p class="achievement-description">
+                            Won first place at OpenHack25 hackathon with an AI-powered study assistant.
+                        </p>
+                        <div class="achievement-prize">
+                            <i class="fas fa-award"></i>
+                            <span>PKR 10,000 Prize</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="achievement-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="achievement-badge" style="background: linear-gradient(135deg, #4285F4, #34A853);">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <span class="achievement-type">Google Developer Student Club</span>
+                        <h3 class="achievement-title">Technical Lead - GDSC</h3>
+                        <p class="achievement-description">
+                            Led technical workshops and mentored students at Google Developer Student Clubs.
+                        </p>
+                        <div class="achievement-prize"
+                            style="background: linear-gradient(135deg, rgba(66, 133, 244, 0.15), rgba(52, 168, 83, 0.05)); border-color: rgba(66, 133, 244, 0.3); color: #4285F4;">
+                            <i class="fas fa-calendar"></i>
+                            <span>2023</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="achievement-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="achievement-badge" style="background: linear-gradient(135deg, #EA4335, #FBBC04);">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <span class="achievement-type">Google Developer Group on Campus</span>
+                        <h3 class="achievement-title">Social Media Manager - GDGoC</h3>
+                        <p class="achievement-description">
+                            Managing social media and community outreach for Google Developer Group on Campus.
+                        </p>
+                        <div class="achievement-prize"
+                            style="background: linear-gradient(135deg, rgba(234, 67, 53, 0.15), rgba(251, 188, 4, 0.05)); border-color: rgba(234, 67, 53, 0.3); color: #EA4335;">
+                            <i class="fas fa-calendar"></i>
+                            <span>2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="certificates section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><i class="fas fa-certificate"></i> Certifications</span>
+                <h2 class="section-title">Professional <span class="gradient-text">Certificates</span></h2>
+            </div>
+            <div class="certificates-grid">
+                <div class="certificate-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="certificate-icon">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera.s3.amazonaws.com/media/coursera-rebrand-logo-square.png"
+                            alt="Coursera">
+                    </div>
+                    <div class="certificate-content">
+                        <h3>IBM Data Science</h3>
+                        <span class="certificate-issuer">IBM</span>
+                        <div class="certificate-actions">
+                            <a href="assets/certificates/Coursera 5BJPRC9ZY71B.pdf" target="_blank" class="btn btn-sm">
+                                <i class="fas fa-eye"></i> View
+                            </a>
+                            <a href="https://www.coursera.org/account/accomplishments/specialization/5BJPRC9ZY71B"
+                                target="_blank" class="btn btn-sm btn-outline">
+                                <i class="fas fa-external-link-alt"></i> Verify
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="certificate-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="certificate-icon">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera.s3.amazonaws.com/media/coursera-rebrand-logo-square.png"
+                            alt="Coursera">
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Google Data Analytics</h3>
+                        <span class="certificate-issuer">Google</span>
+                        <div class="certificate-actions">
+                            <a href="assets/certificates/Coursera P8BEC52HJZK4.pdf" target="_blank" class="btn btn-sm">
+                                <i class="fas fa-eye"></i> View
+                            </a>
+                            <a href="https://www.coursera.org/account/accomplishments/specialization/P8BEC52HJZK4"
+                                target="_blank" class="btn btn-sm btn-outline">
+                                <i class="fas fa-external-link-alt"></i> Verify
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="certificate-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="certificate-icon">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera.s3.amazonaws.com/media/coursera-rebrand-logo-square.png"
+                            alt="Coursera">
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Google Advanced Data Analytics</h3>
+                        <span class="certificate-issuer">Google</span>
+                        <div class="certificate-actions">
+                            <a href="assets/certificates/Coursera WQJ9OPWO34LM.pdf" target="_blank" class="btn btn-sm">
+                                <i class="fas fa-eye"></i> View
+                            </a>
+                            <a href="https://www.coursera.org/account/accomplishments/specialization/WQJ9OPWO34LM"
+                                target="_blank" class="btn btn-sm btn-outline">
+                                <i class="fas fa-external-link-alt"></i> Verify
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><i class="fas fa-folder-open"></i> Projects</span>
+                <h2 class="section-title">Featured <span class="gradient-text">Work</span></h2>
+            </div>
+            <div class="projects-grid">
+                <!-- Hackathon Winning Project -->
+                <div class="project-card featured" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.15">
+                    <div class="project-badge">
+                        <i class="fas fa-trophy"></i> Hackathon Winner
+                    </div>
+                    <div class="project-image">
+                        <div class="project-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>EduMind AI - Study Assistant</h3>
+                        <p>AI study tool with smart flashcards, question answering, and personalized learning. Won
+                            OpenHack'25 with PKR 10,000 prize.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">PyQt6</span>
+                            <span class="skill-tag">OpenAI</span>
+                            <span class="skill-tag">Gemini API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Shaqran92" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Jarvis Voice Assistant -->
+                <div class="project-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.15">
+                    <div class="project-image">
+                        <div class="project-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Jarvis Voice Assistant</h3>
+                        <p>Voice-controlled assistant with speech recognition, Wikipedia search, and system monitoring.
+                            Built with PyQt6 GUI.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">PyQt6</span>
+                            <span class="skill-tag">SpeechRecognition</span>
+                            <span class="skill-tag">pyttsx3</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Battery Optimizer - CEP Project -->
+                <div class="project-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.15">
+                    <div class="project-image">
+                        <div class="project-icon">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Battery Optimizer</h3>
+                        <p>Windows app for battery optimization with memory management and power saving features. CEP
+                            project.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Tkinter</span>
+                            <span class="skill-tag">psutil</span>
+                            <span class="skill-tag">Windows API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="projects-cta">
+                <p>More projects coming soon! Check out my GitHub for current work.</p>
+                <a href="https://github.com/Shaqran92" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i>
+                    View GitHub Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label"><i class="fas fa-envelope"></i> Contact</span>
+                <h2 class="section-title">Let's Work <span class="gradient-text">Together</span></h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-text">
+                        <h3>Get in Touch</h3>
+                        <p>
+                            Have a project in mind or want to discuss opportunities?
+                            I'm always open to new ideas and collaborations. Feel free to reach out!
+                        </p>
+                    </div>
+                    <div class="contact-cards">
+                        <a href="mailto:shaqran124@gmail.com" class="contact-card" data-tilt data-tilt-max="5">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">shaqran124@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/923269218057" target="_blank" class="contact-card" data-tilt
+                            data-tilt-max="5">
+                            <div class="contact-icon whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <span class="contact-label">WhatsApp</span>
+                                <span class="contact-value">+92 326 9218057</span>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/shaqranhussain01/" target="_blank" class="contact-card"
+                            data-tilt data-tilt-max="5">
+                            <div class="contact-icon linkedin">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
+                            <div>
+                                <span class="contact-label">LinkedIn</span>
+                                <span class="contact-value">Shaqran Hussain</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/Shaqran92" target="_blank" class="contact-card" data-tilt
+                            data-tilt-max="5">
+                            <div class="contact-icon github">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div>
+                                <span class="contact-label">GitHub</span>
+                                <span class="contact-value">Shaqran92</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <!-- 
+                        IMPORTANT: Get your free API key from https://web3forms.com/
+                        1. Visit web3forms.com and enter your email (shaqran124@gmail.com)
+                        2. You'll receive an access key via email
+                        3. Replace YOUR_ACCESS_KEY_HERE with your actual key
+                    -->
+                    <input type="hidden" name="access_key" value="8085213e-284b-49ca-9d1f-46980e0a82ab">
+                    <input type="hidden" name="subject" value="New Contact from Portfolio Website">
+                    <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user_subject">Subject</label>
+                        <input type="text" id="user_subject" name="user_subject" placeholder="Project Inquiry" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell me about your project..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Send Message</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-glow"></div>
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="#home" class="footer-logo">
+                        <span class="logo-text">SH</span>
+                    </a>
+                    <h3 class="footer-name">Shaqran Hussain</h3>
+                    <p class="footer-tagline">Python Developer • Data Analyst • Problem Solver</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-nav">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#about">About</a>
+                        <a href="#skills">Skills</a>
+                        <a href="#experience">Experience</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-contact">
+                    <h4>Get in Touch</h4>
+                    <a href="mailto:shaqran124@gmail.com" class="footer-email">
+                        <i class="fas fa-envelope"></i> shaqran124@gmail.com
+                    </a>
+                    <a href="https://wa.me/923269218057" class="footer-phone">
+                        <i class="fab fa-whatsapp"></i> +92 326 9218057
+                    </a>
+                </div>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="footer-socials">
+                <a href="https://github.com/Shaqran92" target="_blank" aria-label="GitHub" class="footer-social">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/shaqranhussain01/" target="_blank" aria-label="LinkedIn"
+                    class="footer-social">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://wa.me/923269218057" target="_blank" aria-label="WhatsApp" class="footer-social">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="mailto:shaqran124@gmail.com" aria-label="Email" class="footer-social">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 Shaqran Hussain. All rights reserved.</p>
+                <p class="footer-made">Made with <i class="fas fa-heart"></i> & <i class="fas fa-coffee"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Vanilla Tilt JS for 3D Tilt Effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
