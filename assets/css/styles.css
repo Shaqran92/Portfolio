@@ -2612,3 +2612,77 @@ textarea:focus-visible,
         border-width: 2px;
     }
 }
+
+/* =====================================================
+   PRINT STYLES
+   ===================================================== */
+@media print {
+
+    /* Hide non-essential elements */
+    .navbar,
+    .theme-toggle,
+    .back-to-top,
+    .hero-particles,
+    .hero-orb,
+    .bg-gradient,
+    .bg-grid,
+    .cursor-glow,
+    .scroll-progress,
+    .contact-form,
+    .preloader,
+    .nav-toggle,
+    .footer-socials {
+        display: none !important;
+    }
+
+    /* Optimize for printing */
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+
+    a {
+        text-decoration: underline;
+        color: black !important;
+    }
+
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+
+    .section-header {
+        page-break-after: avoid;
+    }
+
+    .project-card,
+    .skill-card,
+    .bento-card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        border: 1px solid #ccc !important;
+        background: white !important;
+    }
+
+    .gradient-text {
+        -webkit-text-fill-color: black !important;
+        color: black !important;
+        background: none !important;
+    }
+
+    .hero-title .gradient-text {
+        filter: none !important;
+    }
+
+    .btn {
+        border: 1px solid black !important;
+        background: white !important;
+        color: black !important;
+    }
+}
