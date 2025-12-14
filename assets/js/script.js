@@ -589,6 +589,20 @@ function initScrollReveal() {
         }
     `;
     document.head.appendChild(style);
+
+    // Animate skill progress bars when visible
+    const skillBars = document.querySelectorAll('.skill-progress-bar');
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progress = entry.target.dataset.progress;
+                entry.target.style.width = progress + '%';
+                skillObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    skillBars.forEach(bar => skillObserver.observe(bar));
 }
 
 // =====================================================

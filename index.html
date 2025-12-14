@@ -451,6 +451,10 @@
                         </div>
                         <h3>Python Development</h3>
                     </div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-progress="90"></div>
+                        <span class="skill-percent">90%</span>
+                    </div>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">OOP</span>
@@ -467,6 +471,10 @@
                         </div>
                         <h3>Desktop Applications</h3>
                     </div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-progress="85"></div>
+                        <span class="skill-percent">85%</span>
+                    </div>
                     <div class="skill-tags">
                         <span class="skill-tag">Tkinter</span>
                         <span class="skill-tag">PyQt</span>
@@ -481,6 +489,10 @@
                             <i class="fas fa-database"></i>
                         </div>
                         <h3>Data Analysis</h3>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-progress="80"></div>
+                        <span class="skill-percent">80%</span>
                     </div>
                     <div class="skill-tags">
                         <span class="skill-tag">Pandas</span>
@@ -498,6 +510,10 @@
                         </div>
                         <h3>Learning & Growth</h3>
                     </div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-progress="65"></div>
+                        <span class="skill-percent">65%</span>
+                    </div>
                     <div class="skill-tags">
                         <span class="skill-tag">Data Science</span>
                         <span class="skill-tag">Machine Learning</span>
@@ -511,6 +527,10 @@
                             <i class="fas fa-tools"></i>
                         </div>
                         <h3>Tools & Workflow</h3>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" data-progress="85"></div>
+                        <span class="skill-percent">85%</span>
                     </div>
                     <div class="skill-tags">
                         <span class="skill-tag">Git</span>
@@ -903,22 +923,21 @@
                     <input type="hidden" name="access_key" value="8085213e-284b-49ca-9d1f-46980e0a82ab">
                     <input type="hidden" name="subject" value="New Contact from Portfolio Website">
                     <input type="hidden" name="from_name" value="Portfolio Contact Form">
-                    <div class="form-group">
+                    <div class="form-group floating-label">
+                        <input type="text" id="name" name="name" placeholder=" " required>
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" placeholder="John Doe" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group floating-label">
+                        <input type="email" id="email" name="email" placeholder=" " required>
                         <label for="email">Your Email</label>
-                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group floating-label">
+                        <input type="text" id="user_subject" name="user_subject" placeholder=" " required>
                         <label for="user_subject">Subject</label>
-                        <input type="text" id="user_subject" name="user_subject" placeholder="Project Inquiry" required>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Tell me about your project..."
-                            required></textarea>
+                    <div class="form-group floating-label">
+                        <textarea id="message" name="message" placeholder=" " required></textarea>
+                        <label for="message">Your Message</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-submit" style="width: 100%;">
                         <i class="fas fa-paper-plane"></i>
@@ -996,6 +1015,12 @@
     <button class="back-to-top" id="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- Sticky Mobile CTA -->
+    <a href="#contact" class="mobile-cta" aria-label="Contact Me">
+        <i class="fas fa-envelope"></i>
+        <span>Hire Me</span>
+    </a>
 
     <!-- Dynamic Year -->
     <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
