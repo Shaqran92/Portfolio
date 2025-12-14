@@ -109,13 +109,6 @@ function initPreloader() {
 // CUSTOM CURSOR
 // =====================================================
 function initCustomCursor() {
-    // Accessibility: Check for reduced motion preference
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    // Check if touch device
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
-
-    // Check screen size
     if (window.innerWidth <= 768) return;
 
     const cursor = document.createElement('div');
