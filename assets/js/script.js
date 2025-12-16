@@ -67,6 +67,9 @@ function initPreloader() {
 
     if (!preloader) return;
 
+    // Hide scrollbar during loading
+    document.body.style.overflow = 'hidden';
+
     let progress = 0;
     const duration = 1500; // 1.5 seconds
     const interval = 20; // Update every 20ms
@@ -93,6 +96,8 @@ function initPreloader() {
             setTimeout(() => {
                 preloader.remove();
                 document.body.classList.add('loaded');
+                // Restore scrollbar after loading
+                document.body.style.overflow = '';
             }, 500);
         }, 300);
     });
@@ -428,6 +433,18 @@ function initNavigation() {
         });
     });
 
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navMenu.classList.contains('active')) {
+            // Check if click is outside menu and not on toggle button
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+
     const sections = document.querySelectorAll('section[id]');
 
     function updateActiveLink() {
@@ -630,12 +647,17 @@ function initBackToTop() {
 }
 
 // =====================================================
-// CONTACT FORM - Web3Forms Integration
+// CONTACT FORM - EmailJS Integration
 // =====================================================
 function initContactForm() {
     const contactForm = document.getElementById('contact-form');
 
     if (!contactForm) return;
+
+    // Initialize EmailJS with your public key
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init('w61EMX9wY2n39YzOV');
+    }
 
     const submitBtn = contactForm.querySelector('.btn-submit');
     const originalBtnContent = submitBtn ? submitBtn.innerHTML : '';
@@ -648,18 +670,23 @@ function initContactForm() {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Sending...</span>';
         }
 
-        const formData = new FormData(contactForm);
+        // Get form data
+        const templateParams = {
+            from_name: document.getElementById('from_name').value,
+            from_email: document.getElementById('from_email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+        };
 
         try {
-            const response = await fetch(contactForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
+            // Send email using EmailJS
+            const response = await emailjs.send(
+                'service_ujnwj2u',  // Your Service ID
+                'template_nrr4i9r', // Your Template ID
+                templateParams
+            );
 
-            if (response.ok) {
+            if (response.status === 200) {
                 if (submitBtn) {
                     submitBtn.innerHTML = '<i class="fas fa-check"></i> <span>Message Sent!</span>';
                     submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
@@ -678,6 +705,7 @@ function initContactForm() {
                 throw new Error('Form submission failed');
             }
         } catch (error) {
+            console.error('EmailJS Error:', error);
             if (submitBtn) {
                 submitBtn.innerHTML = '<i class="fas fa-times"></i> <span>Failed to send</span>';
                 submitBtn.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';

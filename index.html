@@ -5,17 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://api.web3forms.com">
+
     <!-- Primary SEO Meta Tags -->
-    <title>Shaqran Hussain | Python Developer & Data Analyst | Portfolio</title>
-    <meta name="title" content="Shaqran Hussain | Python Developer & Data Analyst | Portfolio">
+    <title>Shaqran Hussain | Python Developer & Data Analyst in Pakistan | Portfolio</title>
+    <meta name="title" content="Shaqran Hussain | Python Developer & Data Analyst in Pakistan | Portfolio">
     <meta name="description"
-        content="Shaqran Hussain - Software Engineering student, Python Developer, QA Prompt Engineer, and Data Analyst. OpenHack'25 hackathon winner. Building desktop apps, AI solutions, and data-driven applications.">
+        content="Hire Shaqran Hussain - Award-winning Python Developer, Data Analyst & QA Engineer from Pakistan. OpenHack'25 Hackathon Winner. Expert in Python, PyQt6, Machine Learning, Desktop Apps & Data Science. View projects & contact.">
     <meta name="keywords"
-        content="Shaqran Hussain, Python Developer, Data Analyst, QA Prompt Engineer, Software Engineer, Desktop App Developer, PyQt6, Machine Learning, AI Developer, Data Science, Pakistan Developer, GDSC Technical Lead, Portfolio, Mehran University">
+        content="Shaqran Hussain, Python Developer Pakistan, Data Analyst Pakistan, QA Prompt Engineer, Software Engineer Pakistan, Desktop App Developer, PyQt6 Developer, Machine Learning Engineer, AI Developer Pakistan, Data Science, Hire Python Developer, OpenHack Winner, GDSC Technical Lead, Mehran University, Portfolio, Freelance Developer Pakistan, Khairpur, Sindh">
     <meta name="author" content="Shaqran Hussain">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
+    <meta name="revisit-after" content="3 days">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="coverage" content="Worldwide">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.shaqranhussain.dev/">
@@ -86,7 +95,7 @@
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com;">
 
     <!-- Font Awesome Icons with SRI -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -98,6 +107,20 @@
 
     <!-- Preloader Styles -->
     <style>
+        /* Hide scrollbar during loading */
+        html:has(.preloader:not(.hidden)) {
+            overflow: hidden;
+        }
+
+        html:has(.preloader:not(.hidden))::-webkit-scrollbar {
+            display: none;
+        }
+
+        html:has(.preloader:not(.hidden)) {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         .preloader {
             position: fixed;
             inset: 0;
@@ -913,27 +936,18 @@
                         </a>
                     </div>
                 </div>
-                <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                    <!-- 
-                        IMPORTANT: Get your free API key from https://web3forms.com/
-                        1. Visit web3forms.com and enter your email (shaqran124@gmail.com)
-                        2. You'll receive an access key via email
-                        3. Replace YOUR_ACCESS_KEY_HERE with your actual key
-                    -->
-                    <input type="hidden" name="access_key" value="8085213e-284b-49ca-9d1f-46980e0a82ab">
-                    <input type="hidden" name="subject" value="New Contact from Portfolio Website">
-                    <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                <form class="contact-form" id="contact-form">
                     <div class="form-group floating-label">
-                        <input type="text" id="name" name="name" placeholder=" " required>
-                        <label for="name">Your Name</label>
+                        <input type="text" id="from_name" name="from_name" placeholder=" " required>
+                        <label for="from_name">Your Name</label>
                     </div>
                     <div class="form-group floating-label">
-                        <input type="email" id="email" name="email" placeholder=" " required>
-                        <label for="email">Your Email</label>
+                        <input type="email" id="from_email" name="from_email" placeholder=" " required>
+                        <label for="from_email">Your Email</label>
                     </div>
                     <div class="form-group floating-label">
-                        <input type="text" id="user_subject" name="user_subject" placeholder=" " required>
-                        <label for="user_subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder=" " required>
+                        <label for="subject">Subject</label>
                     </div>
                     <div class="form-group floating-label">
                         <textarea id="message" name="message" placeholder=" " required></textarea>
@@ -943,6 +957,7 @@
                         <i class="fas fa-paper-plane"></i>
                         <span>Send Message</span>
                     </button>
+                    <div class="form-status" id="form-status"></div>
                 </form>
             </div>
         </div>
@@ -969,6 +984,9 @@
                         <a href="#about">About</a>
                         <a href="#skills">Skills</a>
                         <a href="#experience">Experience</a>
+                        <a href="#education">Education</a>
+                        <a href="#achievements">Achievements</a>
+                        <a href="#certificates">Certificates</a>
                         <a href="#projects">Projects</a>
                         <a href="#contact">Contact</a>
                     </div>
@@ -1027,6 +1045,9 @@
 
     <!-- Vanilla Tilt JS for 3D Tilt Effect -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
