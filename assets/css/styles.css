@@ -2416,7 +2416,7 @@ h6 {
         height: 100vh;
         flex-direction: column;
         justify-content: flex-start;
-        gap: 2px;
+        gap: 0;
         padding: 120px 16px 40px;
         background: var(--bg-primary);
         border: 1px solid var(--glass-border);
