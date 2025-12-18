@@ -2416,7 +2416,7 @@ h6 {
         height: 100vh;
         flex-direction: column;
         justify-content: flex-start;
-        gap: 8px;
+        gap: 2px;
         padding: 120px 16px 40px;
         background: var(--bg-primary);
         border: 1px solid var(--glass-border);
@@ -2460,23 +2460,37 @@ h6 {
         font-size: 1rem;
         font-weight: 500;
         color: var(--text-primary);
-        border-radius: 12px;
-        background: transparent;
-        border: 1px solid transparent;
+        background: transparent !important;
+        border: none !important;
         margin: 0;
-        transition: all 0.3s ease;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    /* Bottom line indicator */
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: var(--accent-cyan);
+        transition: width 0.3s ease;
     }
 
     .nav-link:hover {
-        background: rgba(0, 217, 255, 0.1);
-        border-color: rgba(0, 217, 255, 0.3);
         color: var(--accent-cyan);
     }
 
     .nav-link.active {
-        background: rgba(0, 217, 255, 0.15);
-        color: var(--accent-cyan);
-        border-color: var(--accent-cyan);
+        color: var(--accent-cyan) !important;
+        background: transparent !important;
+    }
+
+    .nav-link.active::after {
+        width: 30px;
     }
 
     .nav-toggle {
