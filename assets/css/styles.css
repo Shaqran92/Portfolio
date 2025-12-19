@@ -2418,12 +2418,19 @@ h6 {
         justify-content: flex-start;
         gap: 0;
         padding: 120px 16px 40px;
-        background: var(--bg-primary);
-        border: 1px solid var(--glass-border);
-        border-radius: 24px 0 0 24px;
-        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-left: 1px solid rgba(0, 217, 255, 0.2);
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
         transition: right 0.4s var(--ease-out-expo);
         z-index: 999;
+    }
+
+    [data-theme="light"] .nav-menu {
+        background: rgba(255, 255, 255, 0.95);
+        border-left: 1px solid rgba(0, 102, 255, 0.2);
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
     }
 
     .nav-close {
