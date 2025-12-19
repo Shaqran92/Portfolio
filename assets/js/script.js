@@ -1186,46 +1186,35 @@ function initRippleEffect() {
     });
 }
 
-// Copy to Clipboard
+// Copy to Clipboard - All Email Links
 function initCopyToClipboard() {
-    // Add copy button to email links
+    // Add click handler to all email links
     const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
 
-    emailLinks.forEach(link => {
-        const email = link.href.replace('mailto:', '');
-
-        // Create copy button
-        const copyBtn = document.createElement('button');
-        copyBtn.className = 'copy-email-btn';
-        copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
-        copyBtn.setAttribute('aria-label', 'Copy email address');
-        copyBtn.title = 'Copy email';
-
-        copyBtn.addEventListener('click', async (e) => {
+    emailLinks.forEach(emailLink => {
+        emailLink.addEventListener('click', async (e) => {
             e.preventDefault();
-            e.stopPropagation();
+
+            const email = emailLink.href.replace('mailto:', '');
 
             try {
                 await navigator.clipboard.writeText(email);
-                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
-                copyBtn.classList.add('copied');
                 showNotification('Email copied to clipboard!', 'success');
-
-                setTimeout(() => {
-                    copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
-                    copyBtn.classList.remove('copied');
-                }, 2000);
             } catch (err) {
-                showNotification('Failed to copy email', 'error');
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = email;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showNotification('Email copied to clipboard!', 'success');
+                } catch (err2) {
+                    showNotification('Failed to copy email', 'error');
+                }
+                document.body.removeChild(textArea);
             }
         });
-
-        // Insert copy button after email link
-        link.parentNode.style.position = 'relative';
-        link.parentNode.style.display = 'inline-flex';
-        link.parentNode.style.alignItems = 'center';
-        link.parentNode.style.gap = '8px';
-        link.after(copyBtn);
     });
 }
 
