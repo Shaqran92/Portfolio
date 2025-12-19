@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initTiltEffect();
     initParallax();
+    initPWA();
 });
 
 // =====================================================
@@ -409,9 +410,27 @@ function initNavigation() {
 
     if (navToggle) {
         navToggle.addEventListener('click', () => {
+            const isExpanded = navMenu.classList.contains('active');
+
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
             document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+
+            // Update ARIA attributes
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+            navToggle.setAttribute('aria-label', !isExpanded ? 'Close navigation menu' : 'Open navigation menu');
+
+            // Focus management
+            if (!isExpanded) {
+                // Focus first link when opening
+                const firstLink = navMenu.querySelector('.nav-link');
+                if (firstLink) {
+                    setTimeout(() => firstLink.focus(), 100);
+                }
+            } else {
+                // Return focus to toggle button when closing
+                navToggle.focus();
+            }
         });
     }
 
@@ -422,14 +441,41 @@ function initNavigation() {
             navMenu.classList.remove('active');
             navToggle.classList.remove('active');
             document.body.style.overflow = '';
+
+            // Update ARIA attributes
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Open navigation menu');
+
+            // Return focus to toggle button
+            navToggle.focus();
         });
     }
+
+    // Keyboard navigation - Esc to close navbar
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            document.body.style.overflow = '';
+
+            // Update ARIA attributes
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Open navigation menu');
+
+            // Return focus to toggle button
+            navToggle.focus();
+        }
+    });
 
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
             navToggle.classList.remove('active');
             document.body.style.overflow = '';
+
+            // Update ARIA attributes
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Open navigation menu');
         });
     });
 
@@ -444,6 +490,38 @@ function initNavigation() {
             }
         }
     });
+
+    // Swipe gesture to close navbar (mobile)
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    if (navMenu) {
+        navMenu.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        navMenu.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeDistance = touchEndX - touchStartX;
+            const minSwipeDistance = 50; // Minimum swipe distance in pixels
+
+            // Swipe right to close
+            if (swipeDistance > minSwipeDistance && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                document.body.style.overflow = '';
+
+                // Haptic feedback (if supported)
+                if ('vibrate' in navigator) {
+                    navigator.vibrate(50);
+                }
+            }
+        }
+    }
 
     const sections = document.querySelectorAll('section[id]');
 
@@ -549,12 +627,22 @@ function initThemeToggle() {
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
             }
+            // Update ARIA state
+            if (themeToggle) {
+                themeToggle.setAttribute('aria-pressed', 'true');
+                themeToggle.setAttribute('aria-label', 'Switch to dark theme');
+            }
         } else {
             document.documentElement.removeAttribute('data-theme');
             document.body.style.background = '#000000';
             if (themeIcon) {
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
+            }
+            // Update ARIA state
+            if (themeToggle) {
+                themeToggle.setAttribute('aria-pressed', 'false');
+                themeToggle.setAttribute('aria-label', 'Switch to light theme');
             }
         }
     }
@@ -849,6 +937,342 @@ function animateCounter(element, target) {
         }
     }, stepTime);
 }
+
+// =====================================================
+// LAZY LOADING UTILITY (for future images)
+// =====================================================
+function initLazyLoading() {
+    const lazyImages = document.querySelectorAll('img[data-src], img[loading="lazy"]');
+
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px', // Start loading 50px before entering viewport
+            threshold: 0.01
+        });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+    } else {
+        // Fallback for browsers without IntersectionObserver
+        lazyImages.forEach(img => {
+            if (img.dataset.src) {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+            }
+        });
+    }
+}
+
+// Initialize lazy loading if images exist
+if (document.querySelectorAll('img').length > 0) {
+    initLazyLoading();
+}
+
+// =====================================================
+// PWA - INSTALL PROMPT
+// =====================================================
+function initPWA() {
+    let deferredPrompt;
+
+    // Listen for beforeinstallprompt event
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        // Stash the event so it can be triggered later
+        deferredPrompt = e;
+
+        // Show install button after a delay
+        setTimeout(() => {
+            showInstallPrompt();
+        }, 5000); // Show after 5 seconds
+    });
+
+    function showInstallPrompt() {
+        // Create install prompt UI
+        const installPrompt = document.createElement('div');
+        installPrompt.className = 'pwa-install-prompt';
+        installPrompt.innerHTML = `
+            <div class="pwa-prompt-content">
+                <div class="pwa-prompt-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <div class="pwa-prompt-text">
+                    <h4>Install App</h4>
+                    <p>Add to home screen for quick access</p>
+                </div>
+                <button class="pwa-install-btn" aria-label="Install app">
+                    Install
+                </button>
+                <button class="pwa-close-btn" aria-label="Close install prompt">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        `;
+
+        document.body.appendChild(installPrompt);
+
+        // Add styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .pwa-install-prompt {
+                position: fixed;
+                bottom: 24px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1000;
+                animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            @keyframes slideUp {
+                from {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(100px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+            }
+
+            .pwa-prompt-content {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                padding: 16px 20px;
+                background: var(--glass-bg);
+                backdrop-filter: blur(20px);
+                border: 1px solid var(--glass-border);
+                border-radius: 16px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+                max-width: 90vw;
+            }
+
+            .pwa-prompt-icon {
+                width: 48px;
+                height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--gradient-main);
+                border-radius: 12px;
+                font-size: 1.5rem;
+                color: white;
+            }
+
+            .pwa-prompt-text h4 {
+                margin: 0 0 4px 0;
+                font-size: 1rem;
+                color: var(--text-primary);
+            }
+
+            .pwa-prompt-text p {
+                margin: 0;
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+            }
+
+            .pwa-install-btn {
+                padding: 10px 20px;
+                background: var(--accent-cyan);
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .pwa-install-btn:hover {
+                background: var(--accent-blue);
+                transform: translateY(-2px);
+            }
+
+            .pwa-close-btn {
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                border: none;
+                color: var(--text-secondary);
+                cursor: pointer;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+            }
+
+            .pwa-close-btn:hover {
+                background: rgba(255, 255, 255, 0.1);
+                color: var(--text-primary);
+            }
+
+            @media (max-width: 768px) {
+                .pwa-prompt-content {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Install button click handler
+        const installBtn = installPrompt.querySelector('.pwa-install-btn');
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                // Show the install prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response to the install prompt: ${outcome}`);
+                // Clear the deferredPrompt
+                deferredPrompt = null;
+            }
+            // Remove the prompt
+            installPrompt.remove();
+        });
+
+        // Close button click handler
+        const closeBtn = installPrompt.querySelector('.pwa-close-btn');
+        closeBtn.addEventListener('click', () => {
+            installPrompt.style.animation = 'slideOut 0.3s ease forwards';
+            setTimeout(() => installPrompt.remove(), 300);
+        });
+    }
+
+    // Log when PWA is installed
+    window.addEventListener('appinstalled', () => {
+        console.log('PWA was installed');
+        showNotification('App installed successfully!', 'success');
+    });
+}
+
+// =====================================================
+// INTERACTIVE FEATURES
+// =====================================================
+
+// Ripple Effect for Buttons
+function initRippleEffect() {
+    const buttons = document.querySelectorAll('.btn, .social-link, .nav-link');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            const ripple = document.createElement('span');
+            ripple.classList.add('btn-ripple');
+
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+
+            this.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+}
+
+// Copy to Clipboard
+function initCopyToClipboard() {
+    // Add copy button to email links
+    const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+
+    emailLinks.forEach(link => {
+        const email = link.href.replace('mailto:', '');
+
+        // Create copy button
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-email-btn';
+        copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
+        copyBtn.setAttribute('aria-label', 'Copy email address');
+        copyBtn.title = 'Copy email';
+
+        copyBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            try {
+                await navigator.clipboard.writeText(email);
+                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                copyBtn.classList.add('copied');
+                showNotification('Email copied to clipboard!', 'success');
+
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                showNotification('Failed to copy email', 'error');
+            }
+        });
+
+        // Insert copy button after email link
+        link.parentNode.style.position = 'relative';
+        link.parentNode.style.display = 'inline-flex';
+        link.parentNode.style.alignItems = 'center';
+        link.parentNode.style.gap = '8px';
+        link.after(copyBtn);
+    });
+}
+
+// Enhanced Form Interactions
+function initFormEnhancements() {
+    const textarea = document.querySelector('#contact-form textarea');
+
+    if (textarea) {
+        // Character counter
+        const maxLength = 500;
+        const counter = document.createElement('div');
+        counter.className = 'char-counter';
+        counter.textContent = `0 / ${maxLength}`;
+        textarea.setAttribute('maxlength', maxLength);
+        textarea.parentNode.appendChild(counter);
+
+        textarea.addEventListener('input', () => {
+            const length = textarea.value.length;
+            counter.textContent = `${length} / ${maxLength}`;
+
+            if (length > maxLength * 0.9) {
+                counter.style.color = 'var(--accent-red)';
+            } else {
+                counter.style.color = 'var(--text-secondary)';
+            }
+        });
+    }
+
+    // Input focus glow
+    const inputs = document.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.parentElement.classList.add('input-focused');
+        });
+
+        input.addEventListener('blur', () => {
+            input.parentElement.classList.remove('input-focused');
+        });
+    });
+}
+
+// Initialize interactive features
+document.addEventListener('DOMContentLoaded', () => {
+    initRippleEffect();
+    initCopyToClipboard();
+    initFormEnhancements();
+});
 
 // =====================================================
 // CONSOLE GREETING

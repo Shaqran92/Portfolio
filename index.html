@@ -9,7 +9,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://api.web3forms.com">
+    <link rel="dns-prefetch" href="https://api.emailjs.com">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="assets/css/styles.css" as="style">
+    <link rel="preload" href="assets/js/script.js" as="script">
 
     <!-- Primary SEO Meta Tags -->
     <title>Shaqran Hussain | Python Developer & Data Analyst in Pakistan | Portfolio</title>
@@ -95,7 +99,14 @@
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com; manifest-src 'self';">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00d9ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Shaqran.dev">
 
     <!-- Font Awesome Icons with SRI -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -284,30 +295,37 @@
     <div class="cursor-glow" id="cursor-glow"></div>
 
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <a href="#home" class="nav-logo">
+            <a href="#home" class="nav-logo" aria-label="Shaqran Hussain - Home">
                 <span class="logo-text">Shaqran.dev</span>
             </a>
-            <ul class="nav-menu" id="nav-menu">
-                <button class="nav-close" id="nav-close" aria-label="Close menu">
-                    <i class="fas fa-times"></i>
+            <ul class="nav-menu" id="nav-menu" role="menu" aria-label="Main menu">
+                <button class="nav-close" id="nav-close" aria-label="Close navigation menu">
+                    <i class="fas fa-times" aria-hidden="true"></i>
                 </button>
-                <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
-                <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
-                <li class="nav-item"><a href="#achievements" class="nav-link">Achievements</a></li>
-                <li class="nav-item"><a href="#certificates" class="nav-link">Certificates</a></li>
-                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                <li class="nav-item" role="none"><a href="#home" class="nav-link active" role="menuitem"
+                        aria-current="page">Home</a></li>
+                <li class="nav-item" role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
+                <li class="nav-item" role="none"><a href="#skills" class="nav-link" role="menuitem">Skills</a></li>
+                <li class="nav-item" role="none"><a href="#experience" class="nav-link" role="menuitem">Experience</a>
+                </li>
+                <li class="nav-item" role="none"><a href="#education" class="nav-link" role="menuitem">Education</a>
+                </li>
+                <li class="nav-item" role="none"><a href="#achievements" class="nav-link"
+                        role="menuitem">Achievements</a></li>
+                <li class="nav-item" role="none"><a href="#certificates" class="nav-link"
+                        role="menuitem">Certificates</a></li>
+                <li class="nav-item" role="none"><a href="#projects" class="nav-link" role="menuitem">Projects</a></li>
+                <li class="nav-item" role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme"
+                    aria-pressed="false">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
                 </button>
-                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false"
+                    aria-controls="nav-menu">
                     <span class="hamburger"></span>
                 </button>
             </div>
