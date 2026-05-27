@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaqran Hussain — CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ==================== PRINT & SCREEN STYLES ==================== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #0a66c2;
+            --primary-dark: #004182;
+            --accent: #00d9ff;
+            --text: #1a1a2e;
+            --text-light: #4a4a6a;
+            --text-muted: #7a7a9a;
+            --bg: #ffffff;
+            --bg-light: #f8f9fc;
+            --border: #e2e5f1;
+            --gradient: linear-gradient(135deg, #0a66c2 0%, #00d9ff 100%);
+        }
+
+        html { font-size: 14px; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: #f0f2f5;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .cv-page {
+            max-width: 850px;
+            margin: 32px auto;
+            background: var(--bg);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.12);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* ==================== HEADER ==================== */
+        .cv-header {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 50%, #0a2540 100%);
+            color: #ffffff;
+            padding: 48px 56px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cv-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,217,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cv-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cv-header-left h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 6px;
+        }
+
+        .cv-header-left h1 span {
+            background: linear-gradient(90deg, #00d9ff, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cv-header-left .cv-title {
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 16px;
+        }
+
+        .cv-header-left .cv-summary {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.65);
+            max-width: 460px;
+            line-height: 1.6;
+        }
+
+        .cv-header-right {
+            text-align: right;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.75);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 200px;
+        }
+
+        .cv-header-right a {
+            color: #00d9ff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .cv-header-right a:hover { color: #ffffff; }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .contact-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00d9ff;
+            flex-shrink: 0;
+        }
+
+        /* ==================== BODY ==================== */
+        .cv-body {
+            padding: 40px 56px 48px;
+        }
+
+        .cv-section {
+            margin-bottom: 32px;
+        }
+
+        .cv-section:last-child { margin-bottom: 0; }
+
+        .cv-section-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--primary);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cv-section-title::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            background: var(--gradient);
+            flex-shrink: 0;
+        }
+
+        /* ==================== EXPERIENCE ==================== */
+        .exp-item {
+            margin-bottom: 20px;
+            padding-left: 16px;
+            border-left: 3px solid var(--border);
+            transition: border-color 0.2s;
+        }
+
+        .exp-item:hover { border-left-color: var(--primary); }
+
+        .exp-item:last-child { margin-bottom: 0; }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .exp-role {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .exp-date {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--primary);
+            background: rgba(10,102,194,0.08);
+            padding: 2px 10px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        .exp-company {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .exp-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .exp-bullets li {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            padding-left: 16px;
+            position: relative;
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+
+        .exp-bullets li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        /* ==================== EDUCATION ==================== */
+        .edu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .edu-degree {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .edu-school {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .edu-status {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #10b981;
+            background: rgba(16,185,129,0.08);
+            padding: 2px 10px;
+            border-radius: 12px;
+        }
+
+        /* ==================== PROJECTS ==================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .project-item {
+            padding: 16px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .project-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 12px rgba(10,102,194,0.08);
+        }
+
+        .project-item.featured {
+            grid-column: span 2;
+            border-left: 4px solid var(--primary);
+            background: linear-gradient(135deg, rgba(10,102,194,0.04) 0%, var(--bg-light) 100%);
+        }
+
+        .project-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-name .badge {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 2px 8px;
+            border-radius: 8px;
+            background: var(--gradient);
+            color: white;
+        }
+
+        .project-desc {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-tag {
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 2px 10px;
+            border-radius: 10px;
+            background: rgba(10,102,194,0.08);
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        /* ==================== SKILLS ==================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .skill-group h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .skill-group p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ==================== CERTIFICATIONS ==================== */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        .cert-item {
+            padding: 12px 16px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .cert-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+        }
+
+        .cert-issuer {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ==================== ACHIEVEMENTS ==================== */
+        .achievement-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 0.88rem;
+        }
+
+        .achievement-icon {
+            font-size: 0.75rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        /* ==================== PRINT ==================== */
+        @media print {
+            body { background: white; }
+            .cv-page {
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            .cv-header { padding: 36px 40px; }
+            .cv-body { padding: 28px 40px 36px; }
+            .cv-section { margin-bottom: 24px; }
+            .project-item:hover,
+            .exp-item:hover { border-color: var(--border); box-shadow: none; }
+            @page { margin: 0; size: A4; }
+        }
+
+        @media (max-width: 600px) {
+            .cv-header { padding: 32px 24px; }
+            .cv-header-content { flex-direction: column; gap: 20px; }
+            .cv-header-right { text-align: left; }
+            .contact-item { justify-content: flex-start; }
+            .cv-body { padding: 24px; }
+            .projects-grid, .skills-grid { grid-template-columns: 1fr; }
+            .project-item.featured { grid-column: span 1; }
+            .cert-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-page">
+        <!-- ==================== HEADER ==================== -->
+        <div class="cv-header">
+            <div class="cv-header-content">
+                <div class="cv-header-left">
+                    <h1>Shaqran <span>Hussain</span></h1>
+                    <div class="cv-title">Python Developer · Data Analyst · QA Prompt Engineer</div>
+                    <div class="cv-summary">
+                        Software Engineering student and OpenHack'25 Hackathon Winner with expertise in
+                        Python development, AI/ML integration, data analytics, and full-stack web applications.
+                        Experienced in building production-grade desktop applications with Clean Architecture
+                        and custom machine learning models.
+                    </div>
+                </div>
+                <div class="cv-header-right">
+                    <div class="contact-item">
+                        <span>shaqran124@gmail.com</span>
+                        <span class="contact-dot"></span>
+                    </div>
+                    <div class="contact-item">
+                        <span>+92 326 9218057</span>
+                        <span class="contact-dot"></span>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://github.com/Shaqran92" target="_blank">github.com/Shaqran92</a>
+                        <span class="contact-dot"></span>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://linkedin.com/in/shaqranhussain01" target="_blank">linkedin.com/in/shaqranhussain01</a>
+                        <span class="contact-dot"></span>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://www.shaqranhussain.dev" target="_blank">shaqranhussain.dev</a>
+                        <span class="contact-dot"></span>
+                    </div>
+                    <div class="contact-item">
+                        <span>Khairpur Mirs, Sindh, Pakistan</span>
+                        <span class="contact-dot"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== BODY ==================== -->
+        <div class="cv-body">
+
+            <!-- EXPERIENCE -->
+            <div class="cv-section">
+                <div class="cv-section-title">Professional Experience</div>
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-role">QA Prompt Engineer Intern</span>
+                        <span class="exp-date">2025 — Present</span>
+                    </div>
+                    <div class="exp-company">99 Technologies</div>
+                    <ul class="exp-bullets">
+                        <li>Test and optimize AI prompts to ensure high-quality, accurate model responses across diverse use cases</li>
+                        <li>Develop structured evaluation frameworks for AI output quality and consistency assessment</li>
+                        <li>Write Python scripts for automated QA testing pipelines and prompt regression testing</li>
+                        <li>Collaborate with the AI team to improve prompt-response accuracy and reduce hallucinations</li>
+                    </ul>
+                </div>
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-role">Freelance Python Developer</span>
+                        <span class="exp-date">2024 — Present</span>
+                    </div>
+                    <div class="exp-company">Self-Employed</div>
+                    <ul class="exp-bullets">
+                        <li>Build custom desktop applications (PyQt6/Tkinter), data dashboards (Streamlit/Dash), and Flask web applications</li>
+                        <li>Deliver end-to-end solutions from requirements gathering through deployment and client handoff</li>
+                        <li>Specialize in data analysis automation, AI-integrated tools, and production-grade software architecture</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- EDUCATION -->
+            <div class="cv-section">
+                <div class="cv-section-title">Education</div>
+                <div class="edu-item">
+                    <div>
+                        <div class="edu-degree">Bachelor of Software Engineering</div>
+                        <div class="edu-school">Mehran University of Engineering & Technology — SZAB Campus, Khairpur Mirs</div>
+                    </div>
+                    <span class="edu-status">Currently Enrolled</span>
+                </div>
+            </div>
+
+            <!-- PROJECTS -->
+            <div class="cv-section">
+                <div class="cv-section-title">Featured Projects</div>
+                <div class="projects-grid">
+                    <div class="project-item featured">
+                        <div class="project-name">EduMind AI — Study Assistant <span class="badge">🏆 Hackathon Winner</span></div>
+                        <div class="project-desc">AI-powered study companion with smart flashcards, quizzes, concept mapping, and gamified learning. Multi-provider AI engine (Gemini + OpenAI) with offline NLP fallback. Won OpenHack'25 — PKR 10,000 prize.</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PyQt6</span>
+                            <span class="tech-tag">Gemini API</span>
+                            <span class="tech-tag">OpenAI</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Plotly</span>
+                            <span class="tech-tag">NetworkX</span>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">Smart Battery Optimizer Pro v4.0</div>
+                        <div class="project-desc">Production-grade battery management with custom ML engine — Arrhenius degradation model, Z-score anomaly detection, pattern learning. Clean Architecture (DDD) with 26 UI modules.</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PyQt6</span>
+                            <span class="tech-tag">Custom ML</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">DDD</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">COVID-19 Analytics Dashboard</div>
+                        <div class="project-desc">Interactive dashboard with world map, trend analysis, country comparisons, vaccination tracking, and correlation analysis across 200+ countries.</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Dash</span>
+                            <span class="tech-tag">Plotly</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">NumPy</span>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">E-Commerce Web Application</div>
+                        <div class="project-desc">Full-stack platform with user auth, product catalog, shopping cart, checkout, and order management with cancellation window.</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">SQLAlchemy</span>
+                            <span class="tech-tag">Jinja2</span>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">Pakistani Startup Funding Analysis</div>
+                        <div class="project-desc">Data analysis of Pakistan's startup ecosystem — investor analytics, sector breakdowns, city-wise funding, and YoY trends.</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Matplotlib</span>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">Python Arcade — 22 Games</div>
+                        <div class="project-desc">Browser-based arcade with 22 games — text adventures to canvas-rendered classics. Neon retro theme, zero dependencies.</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Canvas API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SKILLS -->
+            <div class="cv-section">
+                <div class="cv-section-title">Technical Skills</div>
+                <div class="skills-grid">
+                    <div class="skill-group">
+                        <h4>Languages & Core</h4>
+                        <p>Python (primary), JavaScript, HTML/CSS, SQL, Java</p>
+                    </div>
+                    <div class="skill-group">
+                        <h4>AI & Machine Learning</h4>
+                        <p>Google Gemini API, OpenAI API, Custom ML Models, NLP, Prompt Engineering</p>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Data Science & Analytics</h4>
+                        <p>Pandas, NumPy, Plotly, Matplotlib, Seaborn, Streamlit, Dash, Time Series Analysis</p>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Desktop & GUI</h4>
+                        <p>PyQt6, Tkinter, CustomTkinter, Multi-threading, PyInstaller</p>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Web Development</h4>
+                        <p>Flask, Streamlit, Dash, SQLAlchemy, Jinja2, REST APIs, Selenium</p>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Tools & Architecture</h4>
+                        <p>Git, GitHub, Docker, SQLite, MySQL, Jupyter, Clean Architecture, DDD, Repository Pattern</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CERTIFICATIONS -->
+            <div class="cv-section">
+                <div class="cv-section-title">Certifications</div>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <div class="cert-name">IBM Data Science</div>
+                        <div class="cert-issuer">IBM — Coursera</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Google Data Analytics</div>
+                        <div class="cert-issuer">Google — Coursera</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Google Advanced Data Analytics</div>
+                        <div class="cert-issuer">Google — Coursera</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACHIEVEMENTS -->
+            <div class="cv-section">
+                <div class="cv-section-title">Achievements & Leadership</div>
+                <div class="achievement-list">
+                    <div class="achievement-item">
+                        <span class="achievement-icon">🏆</span>
+                        <span><strong>OpenHack'25 Hackathon Winner</strong> — First place with EduMind AI Study Assistant (PKR 10,000 prize)</span>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">🟢</span>
+                        <span><strong>Technical Lead — GDSC</strong> — Led technical workshops and mentored students at Google Developer Student Clubs (2023)</span>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">🔵</span>
+                        <span><strong>Social Media Manager — GDGoC</strong> — Managing social media and community outreach for Google Developer Group on Campus (2024)</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

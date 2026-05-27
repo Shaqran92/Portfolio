@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaqran Hussain — Cover Letter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #0a66c2;
+            --accent: #00d9ff;
+            --text: #1a1a2e;
+            --text-light: #4a4a6a;
+            --border: #e2e5f1;
+        }
+
+        html { font-size: 15px; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: #f0f2f5;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .letter-page {
+            max-width: 780px;
+            margin: 32px auto;
+            background: #ffffff;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.12);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* ==================== HEADER ==================== */
+        .letter-header {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 50%, #0a2540 100%);
+            color: #ffffff;
+            padding: 44px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .letter-header::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            right: -25%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(0,217,255,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        .header-name span {
+            background: linear-gradient(90deg, #00d9ff, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-title {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            font-weight: 400;
+        }
+
+        .header-contact {
+            text-align: right;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.8;
+        }
+
+        .header-contact a {
+            color: #00d9ff;
+            text-decoration: none;
+        }
+
+        /* ==================== BODY ==================== */
+        .letter-body {
+            padding: 48px 60px 56px;
+        }
+
+        .letter-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 28px;
+        }
+
+        .letter-recipient {
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .letter-recipient strong {
+            font-size: 1rem;
+        }
+
+        .letter-recipient p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .letter-greeting {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .letter-content p {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 16px;
+            line-height: 1.75;
+        }
+
+        .letter-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Key highlights box */
+        .highlights-box {
+            background: linear-gradient(135deg, rgba(10,102,194,0.04) 0%, rgba(0,217,255,0.03) 100%);
+            border: 1px solid rgba(10,102,194,0.12);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 24px 0;
+        }
+
+        .highlights-box h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .highlights-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .highlights-list li {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .highlights-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 0.7rem;
+            top: 3px;
+        }
+
+        /* Closing */
+        .letter-closing {
+            margin-top: 32px;
+        }
+
+        .letter-closing p {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .letter-signature {
+            margin-top: 24px;
+        }
+
+        .signature-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .signature-title {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .signature-links {
+            margin-top: 8px;
+            display: flex;
+            gap: 20px;
+            font-size: 0.82rem;
+        }
+
+        .signature-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* ==================== PRINT ==================== */
+        @media print {
+            body { background: white; }
+            .letter-page {
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            .letter-header { padding: 36px 48px; }
+            .letter-body { padding: 36px 48px 44px; }
+            @page { margin: 0; size: A4; }
+        }
+
+        @media (max-width: 600px) {
+            .letter-header { padding: 32px 24px; }
+            .header-content { flex-direction: column; gap: 16px; align-items: flex-start; }
+            .header-contact { text-align: left; }
+            .letter-body { padding: 28px 24px 36px; }
+            .highlights-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="letter-page">
+        <!-- ==================== HEADER ==================== -->
+        <div class="letter-header">
+            <div class="header-content">
+                <div>
+                    <div class="header-name">Shaqran <span>Hussain</span></div>
+                    <div class="header-title">Python Developer · Data Analyst · QA Prompt Engineer</div>
+                </div>
+                <div class="header-contact">
+                    shaqran124@gmail.com<br>
+                    +92 326 9218057<br>
+                    <a href="https://www.shaqranhussain.dev">shaqranhussain.dev</a><br>
+                    <a href="https://github.com/Shaqran92">github.com/Shaqran92</a><br>
+                    <a href="https://linkedin.com/in/shaqranhussain01">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== BODY ==================== -->
+        <div class="letter-body">
+            <div class="letter-date">May 28, 2026</div>
+
+            <div class="letter-recipient">
+                <strong>Hiring Manager</strong>
+                <p>[Company Name]<br>[Company Address]</p>
+            </div>
+
+            <div class="letter-greeting">Dear Hiring Manager,</div>
+
+            <div class="letter-content">
+                <p>
+                    I am writing to express my strong interest in the <span class="highlight">[Position Title]</span> role at
+                    <span class="highlight">[Company Name]</span>. As a Software Engineering student at Mehran University,
+                    OpenHack'25 Hackathon Winner, and current QA Prompt Engineer Intern at 99 Technologies, I bring a
+                    proven track record of building production-grade software that combines clean architecture with
+                    AI-powered intelligence.
+                </p>
+
+                <p>
+                    My experience spans the full spectrum of Python development — from AI-integrated desktop applications
+                    to interactive data dashboards and full-stack web platforms. At my most recent hackathon, I led the
+                    development of <span class="highlight">EduMind AI</span>, an intelligent study assistant that integrates
+                    Google Gemini and OpenAI APIs with offline NLP fallback, earning first place and a PKR 10,000 prize.
+                    This project demonstrated my ability to architect complex systems under pressure, combining PyQt6,
+                    multi-threaded AI workers, SQLite persistence, and interactive Plotly visualizations into a
+                    polished, user-ready application.
+                </p>
+
+                <p>
+                    My most technically ambitious project, <span class="highlight">Smart Battery Optimizer Pro v4.0</span>,
+                    is a production-grade desktop application built with Clean Architecture (DDD) principles. It features
+                    a custom machine learning engine I developed from scratch — including Arrhenius degradation models for
+                    battery lifespan prediction, Z-score anomaly detection, and usage pattern learning — all implemented
+                    without heavy ML frameworks to keep the application lightweight. The project includes 26 PyQt6 UI modules,
+                    Docker support, comprehensive test suites, and an Inno Setup installer for professional distribution.
+                </p>
+
+                <div class="highlights-box">
+                    <h4>Key Qualifications</h4>
+                    <ul class="highlights-list">
+                        <li>15+ completed projects across AI, data science, and web development</li>
+                        <li>OpenHack'25 Hackathon Winner — AI-powered study assistant</li>
+                        <li>IBM Data Science + Google Data Analytics certified</li>
+                        <li>GDSC Technical Lead — led workshops, mentored students</li>
+                        <li>Production-grade Python with DDD & Clean Architecture</li>
+                        <li>Custom ML models: Arrhenius, Z-score, regression</li>
+                        <li>Full-stack web: Flask, Streamlit, Dash dashboards</li>
+                        <li>AI integration: Gemini API, OpenAI, Prompt Engineering</li>
+                    </ul>
+                </div>
+
+                <p>
+                    Beyond individual projects, I have built interactive data dashboards analyzing COVID-19 trends across
+                    200+ countries with Dash/Plotly, developed a full-stack Flask e-commerce platform with authentication and
+                    order management, and created a browser-based arcade featuring 22 games in pure vanilla JavaScript.
+                    My data analytics work, certified by both Google and IBM through Coursera, includes Pakistani startup
+                    funding analysis with Streamlit and a Brazilian e-commerce dashboard connected to AWS RDS MySQL.
+                </p>
+
+                <p>
+                    As a Technical Lead for Google Developer Student Clubs and Social Media Manager for Google Developer
+                    Group on Campus, I have honed my leadership and communication skills — conducting technical workshops,
+                    mentoring peers, and building community engagement. These experiences complement my technical abilities
+                    and prepare me to contribute effectively in collaborative team environments.
+                </p>
+
+                <p>
+                    I am excited about the opportunity to bring my blend of AI/ML expertise, data-driven thinking,
+                    and passion for clean code to <span class="highlight">[Company Name]</span>. I would welcome the
+                    chance to discuss how my skills and experience align with your team's goals.
+                </p>
+
+                <p>
+                    Thank you for considering my application. I look forward to the opportunity to contribute to your
+                    organization.
+                </p>
+            </div>
+
+            <div class="letter-closing">
+                <p>Sincerely,</p>
+                <div class="letter-signature">
+                    <div class="signature-name">Shaqran Hussain</div>
+                    <div class="signature-title">Python Developer · Data Analyst · QA Prompt Engineer</div>
+                    <div class="signature-links">
+                        <a href="https://www.shaqranhussain.dev">Portfolio</a>
+                        <a href="https://github.com/Shaqran92">GitHub</a>
+                        <a href="https://linkedin.com/in/shaqranhussain01">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
